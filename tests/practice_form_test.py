@@ -1,30 +1,29 @@
 from demoqa_tests.model.pages import practice_form
-from demoqa_tests.utils.scroll import scroll_to
 
 
 def test_student_registration_form():
     practice_form.given_opened()
 
     # WHEN
-    practice_form.input_data('#firstName', 'World')
-    practice_form.input_data('#lastName', 'Peace')
-    practice_form.input_data('#userEmail', 'qwe@mail.com')
+    practice_form.type_firstname('World')
+    practice_form.type_lastname('Peace')
+    practice_form.type_email('qwe@mail.com')
 
     practice_form.choose_gender('Male')
 
-    practice_form.input_data('#userNumber', '9998887755')
+    practice_form.type_phone_number('9998887755')
 
-    practice_form.click('#dateOfBirthInput')
+    practice_form.click_on_datepicker()
     practice_form.pick_month('May')
     practice_form.pick_year('1999')
     practice_form.pick_day(11)
 
-    practice_form.input_subject('English')
+    practice_form.type_subject('English')
 
     practice_form.choose_hobby('Sports')
 
-    scroll_to('#currentAddress')
-    practice_form.input_data('#currentAddress', 'Some address')
+    practice_form.scroll_to_address()
+    practice_form.type_address('Some address')
 
     practice_form.upload_picture('resources/image.PNG')
 
@@ -35,7 +34,7 @@ def test_student_registration_form():
 
     # THEN
 
-    practice_form.validation_of_fields(
+    practice_form.assert_fields(
             'World Peace',
             'qwe@mail.com',
             'Male',
