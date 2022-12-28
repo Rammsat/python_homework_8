@@ -1,7 +1,9 @@
 from selene import have, command
 from selene.support.shared import browser
 from demoqa_tests.model.controls import dropdown
-from demoqa_tests.model.controls import date_picker
+from demoqa_tests.model.controls import datepicker
+from demoqa_tests.model.controls import radiobutton
+from demoqa_tests.model.controls import checkbox
 from demoqa_tests.utils import path_to_file
 from demoqa_tests.utils.scroll import scroll_to
 
@@ -20,10 +22,6 @@ def select_state(value):
 
 def select_city(value):
     dropdown.select('#city', by_text=value)
-
-
-def input_data(element, data):
-    browser.element(element).type(data)
 
 
 def type_firstname(text):
@@ -46,22 +44,22 @@ def type_address(text):
     browser.element('#currentAddress').type(text)
 
 
-def choose_gender(gender):
-    browser.all('[name=gender]').element_by(have.value(gender)).element('..').click()
+def select_gender(gender):
+    radiobutton.gender('[name=gender]', gender)
 
 
-def choose_hobby(hobby):
-    browser.all('[for^=hobbies-checkbox]').element_by(have.text(hobby)).click()
+def select_hobby(hobby):
+    checkbox.hobby('[for^=hobbies-checkbox]', hobby)
 
 
 def pick_month(month):
     browser.element('.react-datepicker__month-select').click()
-    date_picker.date('.react-datepicker__month-select', month)
+    datepicker.date('.react-datepicker__month-select', month)
 
 
 def pick_year(year):
     browser.element('.react-datepicker__year-select').click()
-    date_picker.date('.react-datepicker__year-select', year)
+    datepicker.date('.react-datepicker__year-select', year)
 
 
 def pick_day(day):

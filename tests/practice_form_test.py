@@ -9,7 +9,7 @@ def test_student_registration_form():
     practice_form.type_lastname('Peace')
     practice_form.type_email('qwe@mail.com')
 
-    practice_form.choose_gender('Male')
+    practice_form.select_gender('Male')
 
     practice_form.type_phone_number('9998887755')
 
@@ -20,7 +20,7 @@ def test_student_registration_form():
 
     practice_form.type_subject('English')
 
-    practice_form.choose_hobby('Sports')
+    practice_form.select_hobby('Sports')
 
     practice_form.scroll_to_address()
     practice_form.type_address('Some address')
